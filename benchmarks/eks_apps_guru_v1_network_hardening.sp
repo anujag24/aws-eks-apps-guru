@@ -4,7 +4,7 @@ locals {
 }
 
 benchmark "nsa_cisa_v1_network_hardening" {
-  title = "Network Separation and Hardening"
+  title = "AWS Guru Network Separation and Hardening"
   children = [
     benchmark.nsa_cisa_v1_network_hardening_cpu_limit,
     benchmark.nsa_cisa_v1_network_hardening_cpu_request,

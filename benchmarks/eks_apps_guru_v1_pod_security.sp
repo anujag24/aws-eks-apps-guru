@@ -4,7 +4,7 @@ locals {
 }
 
 benchmark "nsa_cisa_v1_pod_security" {
-  title = "Kubernetes Pod Security"
+  title = "AWS Guru Kubernetes Pod Security"
   children = [
     benchmark.nsa_cisa_v1_pod_security_container_disallow_host_path,
     benchmark.nsa_cisa_v1_pod_security_container_privilege_disabled,
