@@ -30,7 +30,7 @@ control "pod_container_privilege_escalation_disabled" {
   sql         = query.pod_container_privilege_escalation_disabled.sql
 
   tags = merge(local.pod_common_tags, {
-    nsa_cisa_v1  = "true"
+    nsa_cisa_v1 = "true"
   })
 }
 
@@ -140,5 +140,3 @@ control "pod_default_seccomp_profile_enabled" {
     cis = "true"
   })
 }
-
-
