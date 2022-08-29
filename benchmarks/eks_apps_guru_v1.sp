@@ -4,15 +4,16 @@ locals {
   })
 }
 
-benchmark "nsa_cisa_v1" {
+benchmark "eks_apps_guru_v1" {
   title         = "AWS Guru Best Practices for Operating Kubernetes Applications v1.0"
 #  documentation = file("./nsa_cisa_v1/docs/nsa_cisa_v1_overview.md")
   children = [
-    benchmark.nsa_cisa_v1_pod_security,
-    benchmark.nsa_cisa_v1_network_hardening
+    benchmark.eks_apps_guru_v1_pod_security,
+    benchmark.eks_apps_guru_v1_network_hardening,
+    benchmark.eks_apps_guru_v1_more_checks
   ]
 
   tags = merge(local.nsa_cisa_v1_common_tags, {
-    type = "Benchmark"
+    type = "table"
   })
 }
