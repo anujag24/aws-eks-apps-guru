@@ -65,7 +65,7 @@ control "pod_non_root_container" {
   title       = replace(local.non_root_container_title, "__KIND__", "Pod")
   description = replace(local.non_root_container_desc, "__KIND__", "Pod")
   sql         = query.pod_non_root_container.sql
-
+  severity    = "critical"
   tags = merge(local.pod_common_tags, {
     nsa_cisa_v1 = "true"
   })
