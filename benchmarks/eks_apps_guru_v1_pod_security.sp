@@ -3,7 +3,7 @@ locals {
   })
 }
 
-benchmark "nsa_cisa_v1_pod_security" {
+benchmark "eks_apps_guru_v1_pod_security" {
   title = "AWS Guru Kubernetes Pod Security"
   children = [
     benchmark.nsa_cisa_v1_pod_security_container_disallow_host_path,
@@ -59,15 +59,10 @@ benchmark "nsa_cisa_v1_pod_security_container_privilege_escalation_disabled" {
   title       = "Containers should not allow privilege escalation"
   description = "Containers should not allow privilege escalation. A container running with the `allowPrivilegeEscalation` flag set to true may have processes that can gain more privileges than their parent."
   children = [
-    control.cronjob_container_privilege_escalation_disabled,
-    control.daemonset_container_privilege_escalation_disabled,
     control.deployment_container_privilege_escalation_disabled,
     control.job_container_privilege_escalation_disabled,
     control.pod_container_privilege_escalation_disabled,
-    control.pod_security_policy_container_privilege_escalation_disabled,
-    control.replicaset_container_privilege_escalation_disabled,
-    control.replication_controller_container_privilege_escalation_disabled,
-    control.statefulset_container_privilege_escalation_disabled
+    control.pod_security_policy_container_privilege_escalation_disabled
   ]
 
   tags = merge(local.nsa_cisa_v1_pod_security_common_tags, {
