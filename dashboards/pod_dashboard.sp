@@ -9,12 +9,14 @@ dashboard "kubernetes_dashboard" {
 
 container {
 
+
 table {
   query = query.kubernetes_cluster
   width = 10
 }
 
 }
+
 
   container {
   
@@ -164,6 +166,8 @@ query "kubernetes_list_pods" {
 sql = <<-EOQ
 select name as "Application Pod Names", namespace as "Namespace" from kubernetes_pod where namespace != 'kube-system';
   EOQ
+  
+  
 }
 
 query "kubernetes_cluster" {
