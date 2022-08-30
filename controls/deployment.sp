@@ -4,6 +4,17 @@ locals {
   })
 }
 
+
+control "deployment_replicas_count" {
+  title       = "Reliability of Deployment"
+  description = "Reliability of Deployment"
+  sql         = query.kubernetes_deployment_pod_replicas.sql
+
+  tags = merge(local.deployment_common_tags, {
+    nsa_cisa_v1 = "true"
+  })
+}
+
 control "deployment_cpu_limit" {
   title       = replace(local.container_cpu_limit_title, "__KIND__", "Deployment")
   description = replace(local.container_cpu_limit_desc, "__KIND__", "Deployment")
