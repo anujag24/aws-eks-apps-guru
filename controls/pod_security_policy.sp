@@ -93,3 +93,13 @@ control "pod_security_policy_default_seccomp_profile_enabled" {
     cis = "true"
   })
 }
+
+control "pod_security_service_account_automount_disabled" {
+  title         = "Ensure that Service Account Tokens are only mounted where necessary"
+  description   = "Mounting service account tokens inside pods can provide an avenue for privilege escalation attacks where an attacker is able to compromise a single pod in the cluster. Avoiding mounting these tokens removes this attack avenue."
+  sql           = query.pod_service_account_token_disabled.sql
+
+  tags = merge(local.pod_security_policy_common_tags, {
+    nsa_cisa_v1 = "true"
+  })
+}
