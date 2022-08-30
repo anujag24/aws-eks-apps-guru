@@ -10,7 +10,8 @@ benchmark "eks_apps_guru_v1" {
   children = [
     benchmark.eks_apps_guru_v1_pod_security,
     benchmark.eks_apps_guru_v1_network_hardening,
-    benchmark.eks_apps_guru_v1_more_checks
+    benchmark.eks_apps_guru_v1_cluster_checks,
+    benchmark.eks_apps_guru_v1_resiliency_checks
   ]
 
   tags = merge(local.nsa_cisa_v1_common_tags, {
