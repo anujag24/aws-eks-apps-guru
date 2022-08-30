@@ -6,7 +6,8 @@ locals {
 benchmark "eks_apps_guru_v1_more_checks" {
   title = "AWS Guru Kubernetes Additional Best Practices"
   children = [
-    benchmark.eks_checks
+    benchmark.eks_checks,
+    benchmark.EKS_Default_Deny
   ]
 
   tags = merge(local.more_checks_common_tags, {
@@ -26,5 +27,20 @@ benchmark "eks_checks" {
   tags = merge(local.more_checks_common_tags, {
     type = "Benchmark"
   })
+}
+
+benchmark "EKS_Default_Deny" {
+  title       = "Deny All Egress Network by Default" 
+  description = "Checks for default network deny on EKS Clusters"
+  children  = [
+    control.network_policy_default_deny_egress,
+    control.network_policy_default_deny_ingress,
+    control.network_policy_default_dont_allow_egress,
+    control.network_policy_default_dont_allow_ingress
+    ]
+    
+    tags = merge(local.more_checks_common_tags, {
+      type = "Benchmark"
+    })
 }
 
