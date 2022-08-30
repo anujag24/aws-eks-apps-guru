@@ -30,7 +30,7 @@ benchmark "eks_checks" {
 }
 
 benchmark "EKS_Default_Deny" {
-  title       = "Deny All Egress Network by Default" 
+  title       = "Deny All Ingress and Egress Network by Default" 
   description = "Checks for default network deny on EKS Clusters"
   children  = [
     control.network_policy_default_deny_egress,
