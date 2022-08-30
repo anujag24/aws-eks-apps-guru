@@ -7,11 +7,15 @@ locals {
   }
 }
 
+
+
 mod "awsguru" {
   title = "AWS Kubernetes Apps Best Practices"
   requires {
+    steampipe = "0.13.1"
     plugin "kubernetes" {
       version = "0.4.0"
     }
    }
+   
 }
