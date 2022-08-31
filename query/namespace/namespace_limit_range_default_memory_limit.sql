@@ -1,21 +1,21 @@
 with default_limit_range as (
   select
     namespace,
-    l -> 'default' as default_limit,
-    l -> 'defaultRequest' as default_request
+    l -> 'default' -> 'memory' as memory_default_limit
     from
     kubernetes_limit_range,
     jsonb_array_elements(spec_limits) as l
+    where l -> 'default' -> 'memory' is not null
 )
 select
   -- Required Columns
   n.uid as resource,
   case
-    when default_limit ->> 'memory' is null then 'alarm'
+    when memory_default_limit is null then 'alarm'
     else 'ok'
   end as status,
   case
-    when default_limit ->> 'memory' is null then n.name || ' do not have LimitRange default memory limit.'
+    when memory_default_limit is null then n.name || ' do not have LimitRange default memory limit.'
     else n.name || ' has LimitRange default memory limit.'
   end as reason,
   -- Additional Dimensions
