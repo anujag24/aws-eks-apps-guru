@@ -82,7 +82,7 @@ control "pod_service_account_not_exist" {
 }
 
 control "pod_service_account_token_disabled" {
-  title       = "Automatic mapping of the service account tokens should be disabled in Pod"
+  title       = "Automatic mounting of the service account tokens should be disabled in Pod"
   description = local.service_account_token_disabled_desc
   sql         = query.pod_service_account_token_disabled.sql
 
