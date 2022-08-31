@@ -5,7 +5,7 @@ locals {
 }
 
 control "pod_security_policy_allowed_host_path" {
-  title       = "Pod Security Policy should prohibit hostPaths volumes"
+  title       = "1.1.1 Pod Security Policy should prohibit hostPaths volumes"
   description = "The Pod Security Policy `allowedHostPaths` specifies a list of host paths that are allowed to be used by hostPath volumes. An empty list means there is no restriction on host paths used. This is defined as a list of objects with a single pathPrefix field, which allows hostPath volumes to mount a path that begins with an allowed prefix, and a readOnly field indicating it must be mounted read-only."
   sql         = query.pod_security_policy_allowed_host_path.sql
 
