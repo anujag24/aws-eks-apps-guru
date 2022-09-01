@@ -10,7 +10,7 @@ benchmark "eks_apps_guru_v1_pod_security" {
     benchmark.nsa_cisa_v1_pod_security_container_security_service_hardening,
     benchmark.nsa_cisa_v1_pod_security_host_network_access_disabled,
     benchmark.nsa_cisa_v1_pod_security_hostpid_hostipc_sharing_disabled,
-    benchmark.nsa_cisa_v1_pod_security_non_root_container,
+    #benchmark.nsa_cisa_v1_pod_security_non_root_container,
     benchmark.nsa_cisa_v1_pod_security_service_account_token_disabled
   ]
 
@@ -81,21 +81,22 @@ benchmark "nsa_cisa_v1_pod_security_hostpid_hostipc_sharing_disabled" {
   })
 }
 
+## Pod Security is deprecated in Kubernetes 1.21
 
-benchmark "nsa_cisa_v1_pod_security_non_root_container" {
-  title       = "1.5 Containers should not run with root privileges"
-  description = "Containers should not be deployed with root privileges. By default, many container services run as the privileged root user, and applications execute inside the container as root despite not requiring privileged execution. Preventing root execution by using non-root containers or a rootless container engine limits the impact of a container compromise."
-  children = [
-    control.pod_security_policy_non_root_container
-  ]
-
-  tags = merge(local.nsa_cisa_v1_pod_security_common_tags, {
-    type = "Benchmark"
-  })
-}
+#benchmark "nsa_cisa_v1_pod_security_non_root_container" {
+#  title       = "1.5 Containers should not run with root privileges"
+#  description = "Containers should not be deployed with root privileges. By default, many container services run as the privileged root user, and applications execute inside the container as root despite not requiring privileged execution. Preventing root execution by using non-root containers or a rootless container engine limits the impact of a container compromise."
+#  children = [
+#    control.pod_security_policy_non_root_container
+#  ]
+#
+#  tags = merge(local.nsa_cisa_v1_pod_security_common_tags, {
+#    type = "Benchmark"
+#  })
+#}
 
 benchmark "nsa_cisa_v1_pod_security_service_account_token_disabled" {
-  title       = "1.6 Automatic mounting of the service account tokens should be disabled"
+  title       = "1.5 Automatic mounting of the service account tokens should be disabled"
   description = local.service_account_token_disabled_desc
   children = [
     control.pod_service_account_token_disabled,
