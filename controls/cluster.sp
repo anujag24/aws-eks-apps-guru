@@ -36,7 +36,7 @@ control "eks_cluster_enable_audit_logging" {
 }
 
 control "eks_cluster_auto_scaling_group_attached" {
-  title       = "3.1.3 EKS Cluster Node Group Auto Scaling Group Attached"
+  title       = "4.1.2 EKS Cluster Node Group Auto Scaling Group Attached"
   description = "It is a best practice to create worker nodes using EC2 Auto Scaling groups instead of creating individual EC2 instances and joining them to the cluster. Auto Scaling Groups will automatically replace any terminated or failed nodes ensuring that the cluster always has the capacity to run your workload."
   sql         = query.eks_cluster_node_group_auto_scaling.sql
 
