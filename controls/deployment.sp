@@ -6,7 +6,7 @@ locals {
 
 
 control "deployment_replicas_count" {
-  title       = "Reliability of Deployment"
+  title       = "4.1.1 Reliability of Deployment"
   description = "Reliability of Deployment"
   sql         = query.kubernetes_deployment_pod_replicas.sql
 
