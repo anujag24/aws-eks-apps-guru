@@ -5,6 +5,6 @@ metadata:
     spec:
         limits:
            - max:
-               cpu: "800m"
+               cpu: "1"
              min:
                cpu: "200m"
